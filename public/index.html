@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api YudaMods</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 4px solid #007bff;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 85%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .main {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #007bff;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background-color: #e9f7fd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #007bff;
+        }
+        .highlight img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Api YudaMods</h1>
+        <nav>
+            <a href="#news">News</a>
+            <a href="#stalk">Stalk</a>
+            <a href="#anime">Anime</a>
+            <a href="#random">Random</a>
+            <a href="#images">Images</a>
+            <a href="#text-pro">Text Pro</a>
+            <a href="#game">Game</a>
+            <a href="#islamic-and-other">Islamic and Other</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="main">
+            <div class="highlight">
+                <p>This is a scraper API that I made myself. You can use it by entering the Vercel link above and then just use it. Below there is an example of how to use this API.</p>
+            </div>
+
+            <h2 id="news">News</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req param</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/gempa</td>
+                    <td></td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/news/gempa">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="stalk">Stalk</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/instagram/:type</td>
+                    <td>`type:` *profile*, *story*, *post*, *highlights*, *cash*</td>
+                    <td>`username`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/stalk/instagram/profile?username=farrhnn">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="anime">Anime</h2>
+            <p>This anime search API's, include /api</p>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/myanimelist/:type</td>
+                    <td>`type:` *character*, *manga*, *anime*, *topanime*</td>
+                    <td>`search`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/myanimelist/character?search=naruto">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="random">Random</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/quotes-anime</td>
+                    <td></td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/random/quotes-anime">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="images">Images</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/pinterest/v2</td>
+                    <td>`search`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/image/pinterest/v2?search=ANIME+ICON">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="text-pro">Text Pro</h2>
+            <p>This is text maker/generator API's</p>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/textpro/:type</td>
+                    <td>`type:` *holo*, *fluid*, *deep-sea*, *thunder2*, *thunder*, *matrix*, *technology*, *devilwings*, *blackpink2*, *glitch*, *whitegold*, *ice*, *frozen*, *candy*, *bokeh*, *holographic*, *orange*, *berry*, *comic*, *luxury*, *blackpink*, *cloud*, *newyear*,                     *neon*, *neon-devil*, *transformer*, *neon2*, *gradient*, *glue*, *berry2*, *summer*, *star-wars*, *drop-water*, *cloud2*, *metalic*, *neon-light*, *embossed*, *fire*, *golden* </td>
+                    <td>`text`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/textpro/holo?text=YOURTEXT">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="game">Game</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/mobile-legends/:type</td>
+                    <td>`type:` *profile*, *hero*, *skin*, *equip*, *match*</td>
+                    <td>`id`, `server_id`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/mobile-legends/profile?id=123456&server_id=1234">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+            <h2 id="islamic-and-other">Islamic and Other</h2>
+            <table>
+                <tr>
+                    <th>Param</th>
+                    <th>req query</th>
+                    <th>Method</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/quran</td>
+                    <td>`surah`, `ayah`</td>
+                    <td>GET</td>
+                    <td><a href="https://api.yudahost.my.id/api/islamic/quran?surah=1&ayah=1">=></a></td>
+                </tr>
+                <!-- Add other rows similarly -->
+            </table>
+
+              <h2>Usage Example</h2>
+            <p>Here is an example of how to use this API in your application:</p>
+            <pre>
+<code>fetch('https://api.yudahost.my.id/api/news/gempa')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+</code>
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
