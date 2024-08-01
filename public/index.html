@@ -1,500 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API YudaMods</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-        main {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
-        }
-        h2 {
-            color: #007bff;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            position: relative;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 60px;
-            height: 3px;
-            background-color: #007bff;
-            border-radius: 2px;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        h2:hover::after {
-            transform: scaleX(1);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            transition: background-color 0.3s ease;
-        }
-        th {
-            background-color: #007bff;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 0.9em;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        td a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        td a:hover {
-            text-decoration: underline;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: slideIn 0.5s ease-out;
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #007bff;
-            font-size: 1.5em;
-        }
-        .card p {
-            margin: 10px 0;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .navigation {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .navigation li {
-            margin: 0 10px;
-        }
-        .navigation a {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-        .navigation a:hover {
-            color: #0056b3;
-        }
-    </style>
+    <!-- icon animated -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Yuda</title>
+    <link href="https://inirey.github.io/lolhuman/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://inirey.github.io/lolhuman/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://inirey.github.io/lolhuman/css/default.css" rel="stylesheet">
+    <link href="https://inirey.github.io/lolhuman/css/style.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <h1>API YudaMods</h1>
-    </header>
-    <div class="container">
-        <ul class="navigation">
-            <li><a href="#news">News</a></li>
-            <li><a href="#stalk">Stalk</a></li>
-            <li><a href="#anime">Anime</a></li>
-            <li><a href="#random">Random</a></li>
-            <li><a href="#images">Images</a></li>
-            <li><a href="#text-pro">Text Pro</a></li>
-            <li><a href="#game">Game</a></li>
-            <li><a href="#islamic-and-other">Islamic & Other</a></li>
-        </ul>
-        <main>
-            <div class="card">
-                <h3>Overview</h3>
-                <p>This is a Rest Api Website that I made myself. You can use it with the Features in This Fire Rest and then just use it. Below is an example of how to use this API.</p>
+
+<body id="page-top" class="dark-mode">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <i class="fa fa-smile-beam fa-2x"></i>
+                <div class="sidebar-brand-text mx-3">Yuda APIs</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-thermometer-three-quarters"></i>
+                    <span>Statistic</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Features
             </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fa fa-fw fa-arrow-down"></i>
+                    <span>Downloader & Other</span>
+                </a>
+                <div id="collapseDownload" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Downloader & Media</h6>
+                        <a class="collapse-item" target="_blank" href="/api/image/pinterest?search=ANIME+ICON" target="_blank" >Pinterest</a>
+                        <a class="collapse-item" target="_blank" href="/api/image/pinterest/v2?search=ANIME+ICON" target="_blank" >Pinterest V2</a>
+                        <a class="collapse-item" target="_blank" href="/api/image/wallpaper?search=anime" target="_blank" >Wallpaper</a>
+                        <a class="collapse-item" target="_blank" href="/api/stalk/github/profile?username=YUDAMODS" target="_blank" >Github Profile</a>
+                        <a class="collapse-item" target="_blank" href="/api/stalk/github/repo?username=YUDAMODS" target="_blank" >Github Repo</a>
+                        <a class="collapse-item" target="_blank" href="/api/stalk/npm/v2?packages=nhentai" target="_blank" >Npm V2</a>
+                        <a class="collapse-item" target="_blank" href="/api/shorturl?url=https://github.com/YUDAMODS" target="_blank" >ShortLink</a>
+                        <a class="collapse-item" target="_blank" href="/api/random/darkjokes" target="_blank" >DarkJokes</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/gempa" target="_blank" >Gempa</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/gempa2" target="_blank" >Gempa2</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/covid/world" target="_blank" >Covid World</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/covid/country/indonesia" target="_blank" >Covid Country</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/kompas/news" target="_blank" >Kompas</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/news" target="_blank" >Cnbc News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/market" target="_blank" >Cnbc market</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/investment" target="_blank" >Cnbc investment</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/entrepreneur" target="_blank" >Cnbc entrepreneur</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/syariah" target="_blank" >Cnbc syariah</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/tech" target="_blank" >Cnbc tech</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/cnbc/lifestyle" target="_blank" >Cnbc lifestyle</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/rumahkeadilan" target="_blank" >Rumah Keadilan</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/tixid" target="_blank" >Tixid</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/cnn-news" target="_blank" >Cnn News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/cnbc-news" target="_blank" >Cnbc News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/republika-news" target="_blank" >Republika News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/tempo-news" target="_blank" >Tempo News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/kumparan-news" target="_blank" >Kumparan News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/okezone-news" target="_blank" >OkeZone News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/bbc-news" target="_blank" >Bbc News</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/vice" target="_blank" >Vice</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/suara" target="_blank" >Suara</a>
+                        <a class="collapse-item" target="_blank" href="/api/news/v2/voa" target="_blank" >Voa</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTextPro" aria-expanded="true" aria-controls="collapseForm">
+                    <i class="fa fa-fw fa-font"></i>
+                    <span>Text maker</span>
+                </a>
+                <div id="collapseTextPro" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Textprome Features</h6>
+                        <a class="collapse-item" href="/api/textpro/holo?text=YUDAMODS" target="_blank" >holo</a>
+<a class="collapse-item" href="/api/textpro/fluid?text=YUDAMODS" target="_blank" >fluid</a>
+<a class="collapse-item" href="/api/textpro/deep-sea?text=YUDAMODS" target="_blank" >deep-sea</a>
+<a class="collapse-item" href="/api/textpro/thunder2?text=YUDAMODS" target="_blank" >thunder2</a>
+<a class="collapse-item" href="/api/textpro/thunder?text=YUDAMODS" target="_blank" >thunder</a>
+<a class="collapse-item" href="/api/textpro/matrix?text=YUDAMODS" target="_blank" >matrix</a>
+<a class="collapse-item" href="/api/textpro/technology?text=YUDAMODS" target="_blank" >technolog</a>
+<a class="collapse-item" href="/api/textpro/devilwings?text=YUDAMODS" target="_blank" >devilwings</a>
+<a class="collapse-item" href="/api/textpro/blackpink2?text=YUDAMODS" target="_blank" >blackpink2</a>
+<a class="collapse-item" href="/api/textpro/glitch?text=YUDAMODS" target="_blank" >glitch</a>
+<a class="collapse-item" href="/api/textpro/glitch2?text=YUDAMODS" target="_blank" >glitch2</a>
+<a class="collapse-item" href="/api/textpro/vintage?text=YUDAMODS" target="_blank" >vintage</a>
+<a class="collapse-item" href="/api/textpro/thor?text=YUDAMODS" target="_blank" >thor</a>
+<a class="collapse-item" href="/api/textpro/graffiti?text=YUDAMODS" target="_blank" >graffiti</a>
+<a class="collapse-item" href="/api/textpro/graffiti2?text=YUDAMODS" target="_blank" >graffiti2</a>
+<a class="collapse-item" href="/api/textpro/pornhub?text=YUDAMODS" target="_blank" >pornhub</a>
+<a class="collapse-item" href="/api/textpro/natural?text=YUDAMODS" target="_blank" >natural</a>
+<a class="collapse-item" href="/api/textpro/marvel?text=YUDAMODS" target="_blank" >marvel</a>
+<a class="collapse-item" href="/api/textpro/marvel2?text=YUDAMODS" target="_blank" >marvel2</a>
+<a class="collapse-item" href="/api/textpro/avengers?text=YUDAMODS" target="_blank" >avengers</a>
+<a class="collapse-item" href="/api/textpro/space?text=YUDAMODS" target="_blank" >space</a>
+<a class="collapse-item" href="/api/textpro/spooky?text=YUDAMODS" target="_blank" >spooky</a>
+<a class="collapse-item" href="/api/textpro/layered?text=YUDAMODS" target="_blank" >layered</a>
+<a class="collapse-item" href="/api/textpro/whitegold?text=YUDAMODS" target="_blank" >whitegold</a>
+<a class="collapse-item" href="/api/textpro/ice?text=YUDAMODS" target="_blank" >ice</a>
+<a class="collapse-item" href="/api/textpro/frozen?text=YUDAMODS" target="_blank" >frozen</a>
+<a class="collapse-item" href="/api/textpro/candy?text=YUDAMODS" target="_blank" >candy</a>
+<a class="collapse-item" href="/api/textpro/bokeh?text=YUDAMODS" target="_blank" >bokeh</a>
+<a class="collapse-item" href="/api/textpro/holographic?text=YUDAMODS" target="_blank" >holographic</a>
+<a class="collapse-item" href="/api/textpro/orange?text=YUDAMODS" target="_blank" >orange</a>
+<a class="collapse-item" href="/api/textpro/berry?text=YUDAMODS" target="_blank" >berry</a>
+<a class="collapse-item" href="/api/textpro/comic?text=YUDAMODS" target="_blank" >comic</a>
+<a class="collapse-item" href="/api/textpro/luxury?text=YUDAMODS" target="_blank" >luxury</a>
+<a class="collapse-item" href="/api/textpro/blackpink?text=YUDAMODS" target="_blank" >blackpink</a>
+<a class="collapse-item" href="/api/textpro/cloud?text=YUDAMODS" target="_blank" >cloud</a>
+<a class="collapse-item" href="/api/textpro/newyear?text=YUDAMODS" target="_blank" >newyear</a>
+<a class="collapse-item" href="/api/textpro/multicolor?text=YUDAMODS" target="_blank" >multicolor</a>
+<a class="collapse-item" href="/api/textpro/halloween?text=YUDAMODS" target="_blank" >halloween</a>
+<a class="collapse-item" href="/api/textpro/batman?text=YUDAMODS" target="_blank" >batman</a>
+<a class="collapse-item" href="/api/textpro/transformer?text=YUDAMODS" target="_blank" >transformer</a>
+<a class="collapse-item" href="/api/textpro/blackpink3crystal?text=YUDAMODS" target="_blank" >blackpink3crystal</a>
+<a class="collapse-item" href="/api/textpro/graffiti?text=YUDAMODS" target="_blank" >graffiti</a>
+<a class="collapse-item" href="/api/textpro/pencil?text=YUDAMODS" target="_blank" >pencil</a>
+<a class="collapse-item" href="/api/textpro/paper-cut?text=YUDAMODS" target="_blank" >paper-cut</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGame" aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fas fa-laptop"></i>
+                    <span>Game</span>
+                </a>
+                <div id="collapseGame" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Game API</h6>
+                        <a class="collapse-item" target="_blank" href="/api/game/tebak-gambar" target="_blank" >Tebak gambar</a>
+                        <a class="collapse-item" target="_blank" href="/api/game/caklontong" target="_blank" >Cak Lontong</a>
+                        <a class="collapse-item" target="_blank" href="/api/game/list-hero-ml" target="_blank" >List Hero ML</a>
+                        <a class="collapse-item" target="_blank" href="/api/game/detail-hero?search=miya" target="_blank" >Detail Hero ML</a>
+                  </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIslamic" aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fas fa-star-and-crescent"></i>
+                    <span>Islamic</span>
+                </a>
+                <div id="collapseIslamic" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Islamic Api</h6>
+                        <a class="collapse-item" target="_blank" href="/api/islam/surah?nomer=2" target="_blank" >Surah</a>
+                        <a class="collapse-item" target="_blank" href="/api/islam/jadwal-sholat?nomer=549" target="_blank" >jadwal shalat </a>
+                      </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSimi" aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fas fa-smile"></i>
+                    <span>Simi simi</span>
+                </a>
+                <div id="collapseSimi" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Simi simi api</h6>
+                        <a class="collapse-item" target="_blank" href="/api/simsimi?text=hello&lang=en" target="_blank" >Simsimi</a>
+                  </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNsfw" aria-expanded="true" aria-controls="collapseForm">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Nsfw</span>
+                </a>
+                <div id="collapseNsfw" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+            <h6 class="collapse-header">NSFW Features</h6>
+            <a class="collapse-item" target="_blank" href="/api/random/waifu?type=sfw" target="_blank" >Sfw View</a>
+            <a class="collapse-item" target="_blank" href="/api/random/waifu?type=nsfw" target="_blank" >Nsfw View</a>
+            <a class="collapse-item" target="_blank" href="/api/random/waifu-generator" target="_blank" >Waifu Generator</a>
+            <a class="collapse-item" target="_blank" href="/api/random/sfw?type=waifu">waifu</a>
+            <a class="collapse-item" target="_blank" href="/api/random/hentai" target="_blank" >Hentai</a>
+            <a class="collapse-item" target="_blank" href="/api/random/nekopoi" target="_blank" >Neokopoi</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=neko">neko</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=shinobu">shinobu</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=megumin">megumin</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=bully">bully</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=cuddle">cuddle</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=cry">cry</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=hug">hug</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=awoo">awoo</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=kiss">kiss</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=lick">lick</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=pat">pat</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=smug">smug</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=bonk">bonk</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=yeet">yeet</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=blush">blush</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=smile">smile</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=wave">wave</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=highfive">highfive</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=handhold">handhold</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=nom">nom</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=bite">bite</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=glomp">glomp</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=slap">slap</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=kill">kill</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=kick">kick</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=happy">happy</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=wink">wink</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=poke">poke</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=dance">dance</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=cringe">cringe</a>
+<a class="collapse-item" target="_blank" href="/api/random/sfw?type=ahegao">nsfw ahegao</a>
 
-            <h2 id="news">News</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Param</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/gempa</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/gempa" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/gempa2</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/gempa2" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/covid/world</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/covid/world" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/covid/country/:negara</td>
-                        <td>`negara:` all country names around the world</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/covid/country/indonesia" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/kompas/:type</td>
-                        <td>`type:` *global*, *news*, *terpopuler*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/kompas/news" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/cnbc/:type</td>
-                        <td>`type:` *news*, *market*, *investment*, *entrepreneur*, *syariah*, *tech*, *lifestyle*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/cnbc/news" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/rumahkeadilan</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/rumahkeadilan" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/tixid</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/tixid" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/v2/:type</td>
-                        <td>`type:` *cnn-news*, *cnbc-news*, *republika-news*, *tempo-news*, *kumparan-news*, *okezone-news*, *bbc-news*, *vice*, *suara*, *voa*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/news/v2/cnn-news" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+<a class="collapse-item" target="_blank" href="/api/random/nsfw?type=waifu">waifu</a>
+<a class="collapse-item" target="_blank" href="/api/random/nsfw?type=neko">neko</a>
+<a class="collapse-item" target="_blank" href="/api/random/nsfw?type=trap">trap</a>
+<a class="collapse-item" target="_blank" href="/api/random/nsfw?type=blowjob">blowjob</a>
+<a class="collapse-item" target="_blank" href="/api/random/nsfw?type=ahegao">nsfw ahegao</a>
 
-            <h2 id="stalk">Stalk</h2>
-                        <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/instagram/:type</td>
-                        <td>`type:` *profile*, *story*, *post*, *highlights*, *cash*</td>
-                        <td>`username`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/stalk/instagram/profile?username=farrhnn" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/github/:type</td>
-                        <td>`type:` *profile*, *repo*</td>
-                        <td>`username`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/stalk/github/profile?username=YUDAMODS" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/npm/v2</td>
-                        <td></td>
-                        <td>`packages`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/stalk/npm/v2?packages=nhentai" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
 
-            <h2 id="anime">Anime</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/myanimelist/:type</td>
-                        <td>`type:` *character*, *manga*, *anime*, *topanime*</td>
-                        <td>`search`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/myanimelist/character?search=naruto" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/myanimelist/topanime/:type</td>
-                        <td>`type:` *airing*, *upcoming*, *tv*, *movie*, *ova*, *ona*, *special*, *bypopularity*, *favorite*</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/myanimelist/topanime/airing" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+          </div>
+        </div>
+      </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage" aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fa fa-fw fa-cat"></i>
+                    <span>Anime</span>
+                </a>
+                <div id="collapseImage" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Wibu</h6>
+                        <a class="collapse-item" target="_blank" href="/api/random/quotes-anime" target="_blank" >Quotes Anime</a>
+                        <a class="collapse-item" target="_blank" href="/api/myanimelist/character?search=naruto" target="_blank" >Character</a>
+                        <a class="collapse-item" target="_blank" href="/api/myanimelist/manga?search=naruto" target="_blank" >Manga</a>
+                        <a class="collapse-item" target="_blank" href="/api/myanimelist/anime?search=naruto" target="_blank" >Anime</a>                       
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime?search=naruto" target="_blank" >Top Anime</a>
+		        <a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/airing" target="_blank" >Airing</a>
+	           <a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/upcoming" target="_blank" >Up Coming</a>
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/tv" target="_blank" >Tv</a>
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/movie" target="_blank" >Movie</a>
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/ova" target="_blank" >Ova</a>
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/ona" target="_blank" >Ona</a>
+      <a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/special" target="_blank" >Special</a>
+                        <a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/bypopularity" target="_blank" >Bypopularity</a>
+<a class="collapse-item" target="_blank" href="/api/myanimelist/topanime/favorite" target="_blank" >Favorite</a>
+                    </div>
+                </div>
+            </li>
 
-            <h2 id="random">Random</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/quotes-anime</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/quotes-anime" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/waifu-generator</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/waifu-generator" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/nekopoi</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/nekopoi" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/darkjokes</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/darkjokes" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/waifu</td>
-                        <td>`type:` *nsfw*, *sfw*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/waifu?type=nsfw" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/sfw</td>
-                        <td>`type:` *waifu*, *neko*, *shinobu*, *megumin*, *bully*, *cuddle*, *cry*, *hug*, *awoo*, *kiss*, *lick*, *pat*, *smug*, *bonk*, *yeet*, *blush*, *smile*, *wave*, *highfive*, *handhold*, *nom*, *bite*, *glomp*, *slap*, *kill*, *kick*, *happy*, *wink*, *poke*, *dance*, *cringe*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/sfw?type=waifu" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/nsfw</td>
-                        <td>`type:` *waifu*, *neko*, *trap*, *blowjob*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/nsfw?type=neko" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/hentai</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/random/hentai" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Contact
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="https://t.me/YUDAMODSZX">
+                    <i class="fab fa-fw fa-telegram-plane"></i>
+                    <span>Telegram</span>
+                </a>
+                <a class="nav-link" href="https://youtube.com/@YUDAMODS">
+                    <i class="fab fa-fw fa-youtube"></i>
+                    <span>Youtube</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+        </ul>
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- TopBar -->
+                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+            <ul class="navbar-nav ml-auto">
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown no-arrow">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+              </div>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-success badge-counter">2 </span>
+              </a>
+                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header bg-info-gradient">
+                  INFO CENTER
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-danger">
+                      <i class="fas fa-info-circle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">May 05, 2021</div>
+                    <span style="font-size:12px;">Delete Apikey: OneDayOneCharity</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-danger">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">November 7, 2022</div>
+                    <span style="font-size:14px;">Kelahiran Rest Api By Yuda</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            </ul>
+  </nav>
+                <!-- Sidebar -->
 
-            <h2 id="images">Images</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/pinterest/v2</td>
-                        <td>`search`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/image/pinterest/v2?search=ANIME+ICON" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/pinterest</td>
-                        <td>`search`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/image/pinterest?search=ANIME+ICON" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/wallpaper</td>
-                        <td>`search`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/image/wallpaper?search=anime" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+                    <!-- Container Fluid-->
+                    <div class="container-fluid" id="container-wrapper">
+                        <div class="card h-50 mb-4">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col mr-2">
+                    <h3 style="margin-bottom: 0;"><i class="fas fa-ruler text-danger"></i>README</h3>
+    
+                    <div class="card-body mb-3">
+                        <ol>
+                            <li>Mohon untuk tidak spam APIKeys</li>
+                            <li>Jika APIkeys invalid hubungi saya</li>
+                            <li>Semua fitur yang ada di sini free dan unlimited request</li>
+                            <li>Rest API sewaktu waktu akan maintenance</li>
+                            <li>udah itu aja</li>
+                            <li>Jangan Salahkan Saya Jika Apikey Eror!</li>
+                        </ol>
+                    </div>
+                                    </div>
+                                    <div class="col-auto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <h2 id="text-pro">Text Pro</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/textpro/:type</td>
-                        <td>`type:` *holo*, *fluid*, *deep-sea*, *thunder2*, *thunder*, *matrix*, *technology*, *devilwings*, *blackpink2*, *glitch*, *whitegold*, *ice*, *frozen*, *candy*, *bokeh*, *holographic*, *orange*, *berry*, *comic*, *luxury*, *blackpink*, *cloud*, *newyear*, *multicolor*, *halloween*, *batman*, *transformer*, *blackpink3*, *crystal*, *graffiti*, *pencil*, *paper-cut*</td>
-                        <td>`text`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/textpro/holo?text=YUDAMODS" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/textpro/v2/:type</td>
-                        <td>`type:` *glitch*, *glitch2*, *vintage*, *blackpink*, *thor*, *graffiti*, *graffiti2*, *pornhub*, *natural*, *marvel*, *marvel2*, *avengers*, *space*, *spooky*, *layered*</td>
-                        <td>`text`, `text2`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/textpro/v2/glitch?text=YUDAMODS&text2=anjas" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+                        <div class="row mb-3">
+                        <!-- Earnings (Annual) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Visitor (Unique)</div>
+                                            <div class="h5 mb-0 font-weight-bold">8372</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-user faa-ring animated fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold">8372</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar faa-wrench animated fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Row-->
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            Someone want to donate me?
+                            <p>
+                                <a href="https://saweria.co/yudamods" class="btn btn-primary btn-sm mr-2" target="_blank"><i class="fa fa-fw fa-saweria"></i>&nbsp;Saweria</a>
+                                <a href="https://telegra.ph/file/f0681c75f2584ffff559e.jpg" class="btn btn-primary btn-sm ml-2" target="_blank"><i class="fab fa-fw fa-bitly"></i>&nbsp;Qris</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!---Container Fluid-->
+            </div>
+            <!-- Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        Made with <i class="fa fa-heart faa-flash animated"></i> by
+                        <a href="https://github.com/YUDAMODS" target="_blank" style="color: #fff;">YudaMods><</a>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer -->
+        </div>
+    </div>
 
-            <h2 id="game">Game</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/game/tebak-gambar</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/game/tebak-gambar" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/game/caklontong</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/game/caklontong" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/game/list-hero-ml</td>
-                        <td></td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/game/list-hero-ml" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/game/detail-hero</td>
-                        <td>`search`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/game/detail-hero?search=miya" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-            <h2 id="islamic-and-other">Islamic and Other</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Param</th>
-                        <th>Req Query</th>
-                        <th>Method</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/islam/surah</td>
-                        <td>`nomer`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/islam/surah?nomer=2" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/islam/jadwal-sholat</td>
-                        <td>`nomer`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/islam/jadwal-sholat?nomer=549" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/shorturl</td>
-                        <td>`url`</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/shorturl?url=https://github.com/YUDAMODS" target="_blank">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>/simsimi</td>
-                        <td>`text`, `lang:` *default id*, `key:` *simi api*</td>
-                        <td>GET</td>
-                        <td><a href="https://apisku.yudahost.my.id/api/simsimi?text=hello&lang=en" target="_blank">View</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <script src="https://inirey.github.io/lolhuman/vendor/jquery/jquery.min.js"></script>
+    <script src="https://inirey.github.io/lolhuman/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://inirey.github.io/lolhuman/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://inirey.github.io/lolhuman/js/ruang-admin.min.js"></script>
+</body>
+
+</html>
