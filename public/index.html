@@ -3,276 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api YudaMods</title>
+    <title>API YudaMods</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         header {
-            background: #343a40;
-            color: #fff;
-            padding: 20px 0;
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px 0;
             text-align: center;
-            border-bottom: 4px solid #007bff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
-            letter-spacing: 2px;
-        }
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-        }
-        header nav a:hover {
-            text-decoration: underline;
+            font-weight: bold;
         }
         .container {
-            width: 85%;
+            width: 90%;
+            max-width: 1200px;
             margin: 20px auto;
-            overflow: hidden;
         }
-        .main {
-            background: #fff;
+        main {
+            background: #ffffff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
         }
         h2 {
             color: #007bff;
+            border-bottom: 3px solid #007bff;
             padding-bottom: 10px;
-            border-bottom: 2px solid #007bff;
-            margin-top: 30px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            position: relative;
         }
-        p {
-            line-height: 1.6;
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: #007bff;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        h2:hover::after {
+            transform: scaleX(1);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
         th, td {
-            padding: 15px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: #007bff;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 0.9em;
         }
-        a {
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        td a {
             color: #007bff;
             text-decoration: none;
         }
-        a:hover {
+        td a:hover {
             text-decoration: underline;
         }
-        .highlight {
-            background-color: #e9f7fd;
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            border-left: 5px solid #007bff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-out;
         }
-        .highlight img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px 0;
+        .card h3 {
+            margin-top: 0;
+            color: #007bff;
+            font-size: 1.5em;
         }
-        ol {
-            padding-left: 20px;
+        .card p {
+            margin: 10px 0;
         }
-        pre {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .navigation {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .navigation li {
+            margin: 0 10px;
+        }
+        .navigation a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+        .navigation a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Api YudaMods</h1>
-        <nav>
-            <a href="#news">News</a>
-            <a href="#stalk">Stalk</a>
-            <a href="#anime">Anime</a>
-            <a href="#random">Random</a>
-            <a href="#images">Images</a>
-            <a href="#text-pro">Text Pro</a>
-            <a href="#game">Game</a>
-            <a href="#islamic-and-other">Islamic and Other</a>
-        </nav>
+        <h1>API YudaMods</h1>
     </header>
     <div class="container">
-        <div class="main">
-            <div class="highlight">
-                <p>This is a scraper API that I made myself. You can use it by entering the Vercel link above and then just use it. Below there is an example of how to use this API.</p>
+        <ul class="navigation">
+            <li><a href="#news">News</a></li>
+            <li><a href="#stalk">Stalk</a></li>
+            <li><a href="#anime">Anime</a></li>
+            <li><a href="#random">Random</a></li>
+            <li><a href="#images">Images</a></li>
+            <li><a href="#text-pro">Text Pro</a></li>
+            <li><a href="#game">Game</a></li>
+            <li><a href="#islamic-and-other">Islamic & Other</a></li>
+        </ul>
+        <main>
+            <div class="card">
+                <h3>Overview</h3>
+                <p>This is a Rest Api Website that I made myself. You can use it with the Features in This Fire Rest and then just use it. Below is an example of how to use this API.</p>
             </div>
 
             <h2 id="news">News</h2>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req param</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/gempa</td>
-                    <td></td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/news/gempa">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Param</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/gempa</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/gempa" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/gempa2</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/gempa2" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/covid/world</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/covid/world" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/covid/country/:negara</td>
+                        <td>`negara:` all country names around the world</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/covid/country/indonesia" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/kompas/:type</td>
+                        <td>`type:` *global*, *news*, *terpopuler*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/kompas/news" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/cnbc/:type</td>
+                        <td>`type:` *news*, *market*, *investment*, *entrepreneur*, *syariah*, *tech*, *lifestyle*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/cnbc/news" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/rumahkeadilan</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/rumahkeadilan" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/tixid</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/tixid" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/v2/:type</td>
+                        <td>`type:` *cnn-news*, *cnbc-news*, *republika-news*, *tempo-news*, *kumparan-news*, *okezone-news*, *bbc-news*, *vice*, *suara*, *voa*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/news/v2/cnn-news" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="stalk">Stalk</h2>
-            <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/instagram/:type</td>
-                    <td>`type:` *profile*, *story*, *post*, *highlights*, *cash*</td>
-                    <td>`username`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/stalk/instagram/profile?username=farrhnn">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                        <table>
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/instagram/:type</td>
+                        <td>`type:` *profile*, *story*, *post*, *highlights*, *cash*</td>
+                        <td>`username`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/stalk/instagram/profile?username=farrhnn" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/github/:type</td>
+                        <td>`type:` *profile*, *repo*</td>
+                        <td>`username`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/stalk/github/profile?username=YUDAMODS" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/npm/v2</td>
+                        <td></td>
+                        <td>`packages`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/stalk/npm/v2?packages=nhentai" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="anime">Anime</h2>
-            <p>This anime search API's, include /api</p>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/myanimelist/:type</td>
-                    <td>`type:` *character*, *manga*, *anime*, *topanime*</td>
-                    <td>`search`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/myanimelist/character?search=naruto">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/myanimelist/:type</td>
+                        <td>`type:` *character*, *manga*, *anime*, *topanime*</td>
+                        <td>`search`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/myanimelist/character?search=naruto" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/myanimelist/topanime/:type</td>
+                        <td>`type:` *airing*, *upcoming*, *tv*, *movie*, *ova*, *ona*, *special*, *bypopularity*, *favorite*</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/myanimelist/topanime/airing" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="random">Random</h2>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/quotes-anime</td>
-                    <td></td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/random/quotes-anime">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/quotes-anime</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/quotes-anime" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/waifu-generator</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/waifu-generator" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/nekopoi</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/nekopoi" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/darkjokes</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/darkjokes" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/waifu</td>
+                        <td>`type:` *nsfw*, *sfw*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/waifu?type=nsfw" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/sfw</td>
+                        <td>`type:` *waifu*, *neko*, *shinobu*, *megumin*, *bully*, *cuddle*, *cry*, *hug*, *awoo*, *kiss*, *lick*, *pat*, *smug*, *bonk*, *yeet*, *blush*, *smile*, *wave*, *highfive*, *handhold*, *nom*, *bite*, *glomp*, *slap*, *kill*, *kick*, *happy*, *wink*, *poke*, *dance*, *cringe*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/sfw?type=waifu" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/nsfw</td>
+                        <td>`type:` *waifu*, *neko*, *trap*, *blowjob*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/nsfw?type=neko" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/hentai</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/random/hentai" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="images">Images</h2>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/pinterest/v2</td>
-                    <td>`search`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/image/pinterest/v2?search=ANIME+ICON">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/pinterest/v2</td>
+                        <td>`search`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/image/pinterest/v2?search=ANIME+ICON" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/pinterest</td>
+                        <td>`search`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/image/pinterest?search=ANIME+ICON" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/wallpaper</td>
+                        <td>`search`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/image/wallpaper?search=anime" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="text-pro">Text Pro</h2>
-            <p>This is text maker/generator API's</p>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/textpro/:type</td>
-                    <td>`type:` *holo*, *fluid*, *deep-sea*, *thunder2*, *thunder*, *matrix*, *technology*, *devilwings*, *blackpink2*, *glitch*, *whitegold*, *ice*, *frozen*, *candy*, *bokeh*, *holographic*, *orange*, *berry*, *comic*, *luxury*, *blackpink*, *cloud*, *newyear*,                     *neon*, *neon-devil*, *transformer*, *neon2*, *gradient*, *glue*, *berry2*, *summer*, *star-wars*, *drop-water*, *cloud2*, *metalic*, *neon-light*, *embossed*, *fire*, *golden* </td>
-                    <td>`text`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/textpro/holo?text=YOURTEXT">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/textpro/:type</td>
+                        <td>`type:` *holo*, *fluid*, *deep-sea*, *thunder2*, *thunder*, *matrix*, *technology*, *devilwings*, *blackpink2*, *glitch*, *whitegold*, *ice*, *frozen*, *candy*, *bokeh*, *holographic*, *orange*, *berry*, *comic*, *luxury*, *blackpink*, *cloud*, *newyear*, *multicolor*, *halloween*, *batman*, *transformer*, *blackpink3*, *crystal*, *graffiti*, *pencil*, *paper-cut*</td>
+                        <td>`text`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/textpro/holo?text=YUDAMODS" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/textpro/v2/:type</td>
+                        <td>`type:` *glitch*, *glitch2*, *vintage*, *blackpink*, *thor*, *graffiti*, *graffiti2*, *pornhub*, *natural*, *marvel*, *marvel2*, *avengers*, *space*, *spooky*, *layered*</td>
+                        <td>`text`, `text2`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/textpro/v2/glitch?text=YUDAMODS&text2=anjas" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="game">Game</h2>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/mobile-legends/:type</td>
-                    <td>`type:` *profile*, *hero*, *skin*, *equip*, *match*</td>
-                    <td>`id`, `server_id`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/mobile-legends/profile?id=123456&server_id=1234">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/game/tebak-gambar</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/game/tebak-gambar" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/game/caklontong</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/game/caklontong" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/game/list-hero-ml</td>
+                        <td></td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/game/list-hero-ml" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/game/detail-hero</td>
+                        <td>`search`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/game/detail-hero?search=miya" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2 id="islamic-and-other">Islamic and Other</h2>
             <table>
-                <tr>
-                    <th>Param</th>
-                    <th>req query</th>
-                    <th>Method</th>
-                    <th>Example</th>
-                </tr>
-                <tr>
-                    <td>/quran</td>
-                    <td>`surah`, `ayah`</td>
-                    <td>GET</td>
-                    <td><a href="https://apisku.yudahost.my.id/api/islamic/quran?surah=1&ayah=1">=></a></td>
-                </tr>
-                <!-- Add other rows similarly -->
+                <thead>
+                    <tr>
+                        <th>Param</th>
+                        <th>Req Query</th>
+                        <th>Method</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/islam/surah</td>
+                        <td>`nomer`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/islam/surah?nomer=2" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/islam/jadwal-sholat</td>
+                        <td>`nomer`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/islam/jadwal-sholat?nomer=549" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/shorturl</td>
+                        <td>`url`</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/shorturl?url=https://github.com/YUDAMODS" target="_blank">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>/simsimi</td>
+                        <td>`text`, `lang:` *default id*, `key:` *simi api*</td>
+                        <td>GET</td>
+                        <td><a href="https://apisku.yudahost.my.id/api/simsimi?text=hello&lang=en" target="_blank">View</a></td>
+                    </tr>
+                </tbody>
             </table>
-
-              <h2>Usage Example</h2>
-            <p>Here is an example of how to use this API in your application:</p>
-            <pre>
-<code>fetch('https://apisku.yudahost.my.id/api/news/gempa')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-</code>
-            </pre>
-        </div>
-    </div>
-</body>
-</html>
